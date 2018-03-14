@@ -3,8 +3,7 @@
 const int emitterPin = 13;
 const int receiverPin = 12;
 float dist = 0;
-const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+LiquidCrystal lcd(6, 7, 8, 9, 10, 11);
 
 void setup() {
   pinMode(emitterPin, OUTPUT);
