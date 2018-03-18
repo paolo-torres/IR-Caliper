@@ -1,25 +1,24 @@
 #include <LiquidCrystal.h>
 
 const int emitterPin = 13;
-const int receiverPin = 12;
-float dist = 0;
+const int receiverPin = A0;
+int analogValue = 0;
+float distance = 0;
 LiquidCrystal lcd(6, 7, 8, 9, 10, 11);
 
 void setup() {
   pinMode(emitterPin, OUTPUT);
-  pinMode(receiverPin, INPUT);
-  // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
-  // Print a message to the LCD.
-  lcd.print("Distance: ");
 }
 
 void loop() {
-  digitalWrite(emitterPinPin, HIGH);
-  digitalWrite(receiverPin, HIGH);
-  lcd.print(dist, DEC);
-  if (dist == 100) {
-    dist = 0;
-  }
-  dist++;
+  digitalWrite(emitterPin, HIGH);
+  delay(1);
+  analogValue = analogRead(receiverPin);
+  distance = 2 * pow(10, -6) * pow(EULER, 0.0166 * analogValue);
+  lcd.print("Distance: ");
+  lcd.setCursor(0, 1);
+  lcd.print(distance, 3);
+  delay(1000);
+  lcd.clear();
 }
